@@ -1,0 +1,68 @@
+{
+"events": [
+  {
+    "title": "Schwimmkurs Anfänger",
+    "start": "2025-06-16T09:00:00",
+    "end": "2025-06-16T10:30:00",
+    "klasse": "1c",
+    "aufsicht": "Fr. Schmidt",
+    "ort": "Bäderland Alsterschwimmhalle, Ifflandstraße 21, 22087 Hamburg",
+    "schule": "Kita Sonnenschein"
+  },
+  {
+    "title": "Bronze Abzeichen",
+    "start": "2025-06-17T11:00:00",
+    "end": "2025-06-17T12:30:00",
+    "klasse": "4a",
+    "aufsicht": "Hr. Doe",
+    "ort": "Schwimmbad St. Pauli, Budapester Straße 29, 20359 Hamburg",
+    "schule": "Grundschule Altona"
+  },
+  {
+    "title": "Wassergewöhnung",
+    "start": "2025-06-18T09:30:00",
+    "end": "2025-06-18T11:00:00",
+    "klasse": "3b",
+    "aufsicht": "Fr. Müller",
+    "ort": "Bäderland Festland, Holstenstraße 30, 22767 Hamburg",
+    "schule": "Kita Wasserwelt"
+  },
+  {
+    "title": "Schwimmkurs Fortgeschrittene",
+    "start": "2025-06-19T08:45:00",
+    "end": "2025-06-19T10:15:00",
+    "klasse": "2a",
+    "aufsicht": "Hr. Becker",
+    "ort": "Bäderland Billstedt, Möllner Landstraße 207, 22117 Hamburg",
+    "schule": "Grundschule Billstedt"
+  },
+  {
+    "title": "Silber Abzeichen Prüfung",
+    "start": "2025-06-20T10:00:00",
+    "end": "2025-06-20T11:30:00",
+    "klasse": "4c",
+    "aufsicht": "Fr. Lehmann",
+    "ort": "Schwimmbad Elbgaustraße, Elbgaustraße 110, 22523 Hamburg",
+    "schule": "Kita Kleine Haie"
+  },
+  {
+    "title": "Spiel & Spaß im Wasser",
+    "start": "2025-06-21T13:00:00",
+    "end": "2025-06-21T14:30:00",
+    "klasse": "1a",
+    "aufsicht": "Hr. Krüger",
+    "ort": "Bäderland Kaifu-Bad, Hohe Weide 15, 20259 Hamburg",
+    "schule": "Grundschule Eimsbüttel"
+  },
+  {
+    "title": "Abzeichen-Training Gold",
+    "start": "2025-06-22T09:15:00",
+    "end": "2025-06-22T10:45:00",
+    "klasse": "3a",
+    "aufsicht": "Fr. Hansen",
+    "ort": "Schwimmbad Stellingen, Basselweg 28, 22527 Hamburg",
+    "schule": "Kita Wellenreiter"
+  }
+]
+
+}
