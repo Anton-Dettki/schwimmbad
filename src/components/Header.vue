@@ -54,6 +54,7 @@
                 <h4> {{ user.name }} </h4>
               </v-list-item>
               <v-list-item @click="logout" title="Logout" prepend-icon="mdi-logout" />
+              <v-list-item @click="quickSwitch" title="Quick Switch" prepend-icon="mdi-account-switch-outline" />
               <v-list-item @click="eventStore.resetEvents()" title="Reset" prepend-icon="mdi-step-backward"/>
 
             </v-list>
@@ -95,6 +96,11 @@ function logout() {
   console.log('Logging out...')
   drawer.value = false
   router.push('/logout')
+}
+
+function quickSwitch () {
+  drawer.value = false
+  router.push('/switch')
 }
 </script>
 

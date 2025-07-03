@@ -53,13 +53,24 @@ import { computed, onMounted, shallowRef, watch } from 'vue'
 import { createInputField } from "@sx-premium/interactive-event-modal";
 import { useEventsStore } from '@/store/eventStore.js'
 import { createCurrentTimePlugin } from '@schedule-x/current-time'
+import { useUserStore } from '@/store/userStore.js'
 
+const userStore = useUserStore()
 const eventStore = useEventsStore()
 const theme = useTheme()
 
 const currentTheme = computed(() => theme.global.name.value)
 const calendarEvents = computed(() => eventStore.events)
-const user = computed(() => eventStore.user)
+const user = computed(() => userStore.currentUser)
+
+const visibleEvents = computed(() => {
+  return calendarEvents.value.filter(event => {
+    const calendarAllowed = user.value.calendars.includes(event.calendarId)
+    const locationAllowed = !user.value.isIns || event.location === user.value.location
+
+    return calendarAllowed && locationAllowed
+  })
+})
 
 const eventsService = createEventsServicePlugin()
 const calendarControls = createCalendarControlsPlugin()
@@ -186,7 +197,7 @@ const calendarApp = shallowRef(createCalendar({
     createViewMonthGrid(),
     createViewMonthAgenda(),
   ],
-  events: calendarEvents.value,
+  events: visibleEvents.value,
   dayBoundaries: {
     start: '08:00',
     end: '19:00'
@@ -230,7 +241,11 @@ function changeEventStatus(event, status) {
 }
 
 onMounted(() => {
-  console.log(eventStore.events)})
+  console.log(user.value.calendars)})
+
+watch(user, (newUser) => {
+  calendarControls.setCalendars(newUser.calendars)
+})
 
 function findById(id){
   const index = calendarEvents.value.findIndex(e => e.id === id)

@@ -3,6 +3,7 @@ import CalendarView from '../views/CalendarView.vue'
 import FreieSlotsView from '@/views/FreieSlotsView.vue'
 import MeineTermineView from '@/views/MeineTermineView.vue'
 import LogoutView from '@/views/LogoutView.vue'
+import QuickSwitchView from '@/views/QuickSwitchView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/logout',
       name: 'Logout',
       component: LogoutView,
+    },
+    {
+      path: '/switch',
+      name: 'Quick Switch',
+      component: QuickSwitchView,
     },
   ],
 })
