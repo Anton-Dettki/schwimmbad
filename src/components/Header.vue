@@ -10,6 +10,9 @@
       <v-btn :disabled="route.path === '/meine-termine'" variant="outlined" href="/meine-termine">
         <h3> Meine Termine </h3>
       </v-btn>
+      <v-btn @click="eventStore.resetEvents()">
+        Reset
+      </v-btn>
     </v-col>
 
     <v-col cols="4" class="d-flex align-center justify-end mr-5">
@@ -43,7 +46,10 @@ import { useTheme } from 'vuetify'
 import Profile from '@/components/Profile.vue'
 import avatar from '@/assets/user/admin/adminAvatar.png'
 import calendar from '@/assets/calendar11.png'
+import { useEventsStore } from '@/store/eventStore.js'
 
+
+const eventStore = useEventsStore()
 
 const route = useRoute()
 const theme = useTheme()

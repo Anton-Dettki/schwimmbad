@@ -13,9 +13,13 @@
 </template>
 
 <script setup>
-import { user } from '../store/eventStore.js'
 import avatar from '@/assets/user/admin/adminAvatar.png'
+import { computed } from 'vue'
+import { useEventsStore } from '@/store/eventStore.js'
 
+const eventStore = useEventsStore()
+
+const user = computed(() => eventStore.user)
 </script>
 
 <style scoped>

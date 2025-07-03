@@ -32,17 +32,20 @@
 </template>
 
 <script setup>
-import { calendarEvents, user } from '@/store/eventStore.js'
+import { useEventsStore } from '@/store/eventStore.js'
 import { computed, ref } from 'vue'
 import { useDate } from 'vuetify/framework'
 
 const date = useDate()
+const eventStore = useEventsStore()
 
+const calendarEvents = computed(() => eventStore.events)
+const user = computed(() => eventStore.user)
 const openBookedDialog = ref(false)
 const bookedEvent = ref({})
 
 const items = computed(() => {
-  return calendarEvents.value.filter((e) => e.calendarId === user.kita)
+  return calendarEvents.value.filter((e) => e.calendarId === user.value.kita)
 })
 const headers = [
   { title: 'Name', value: 'title' },
@@ -57,15 +60,9 @@ function book(id) {
   console.log('Releasing event:', id)
 
   const index = calendarEvents.value.findIndex(e => e.id === id)
-  if (index === -1) {
-    console.warn('Event not found')
-    return
-  }
   bookedEvent.value = calendarEvents.value[index]
   openBookedDialog.value = true
-
-  calendarEvents.value[index].calendarId = 'Frei'
-  calendarEvents.value[index].title = 'Freier Termin'
+  eventStore.changeEventStatus({id: id}, 'Frei')
 }
 
 </script>

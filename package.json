@@ -23,6 +23,8 @@
     "@sx-premium/interactive-event-modal": "^3.19.0",
     "@sx-premium/sidebar": "^3.19.0",
     "material-design-icons-iconfont": "^6.7.0",
+    "pinia": "^3.0.3",
+    "pinia-plugin-persistedstate": "^4.4.1",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0",
     "vue-simple-calendar": "^7.2.1",

@@ -43,18 +43,22 @@ import '@schedule-x/theme-default/dist/time-picker.css'
 import '@sx-premium/sidebar/index.css'
 import '@sx-premium/interactive-event-modal/index.css'
 import '@schedule-x/theme-default/dist/time-picker.css'
-import { calendarEvents, user } from '@/store/eventStore.js'
 import { createDragAndDropPlugin } from '@schedule-x/drag-and-drop'
 import { createCalendarControlsPlugin } from '@schedule-x/calendar-controls'
 import { createEventsServicePlugin } from '@schedule-x/events-service'
 import { createSidebarPlugin } from '@sx-premium/sidebar'
 import { createInteractiveEventModal } from '@sx-premium/interactive-event-modal'
 import { useTheme } from 'vuetify/framework'
-import { computed, shallowRef, watch } from 'vue'
+import { computed, onMounted, shallowRef, watch } from 'vue'
 import { createInputField } from "@sx-premium/interactive-event-modal";
+import { useEventsStore } from '@/store/eventStore.js'
 
+const eventStore = useEventsStore()
 const theme = useTheme()
+
 const currentTheme = computed(() => theme.global.name.value)
+const calendarEvents = computed(() => eventStore.events)
+const user = computed(() => eventStore.user)
 
 const eventsService = createEventsServicePlugin()
 const calendarControls = createCalendarControlsPlugin()
@@ -87,7 +91,7 @@ const eventModal = createInteractiveEventModal({
   onDeleteEvent: (eventId) => {
     console.log(eventId)
   },
-  isEventEditable: (event) => { return event.calendarId === user.kita },
+  isEventEditable: (event) => { return event.calendarId === user.value.kita },
   fields: {
     title: {},
     startDate: {},
@@ -120,7 +124,7 @@ const calendarApp = shallowRef(createCalendar({
       darkColors: {
         main: '#fff5c0',
         onContainer: '#fff5de',
-        container: '#c1af2b',
+        container: '#cabb55',
       },
     },
     KitaElbkinder: {
@@ -218,23 +222,14 @@ const calendarApp = shallowRef(createCalendar({
 }))
 
 function changeEventStatus(event, status) {
-  event.calendarId = status
-  const index = calendarEvents.value.findIndex(e => e.id === event.id)
+  eventStore.changeEventStatus(event, status)
 
-  const updatedEvent = {
-    id: event.id,
-    title: status === 'Frei' ? 'Freier Slot' : event.title,
-    start: event.start,
-    end: event.end,
-    calendarId: status,
-    klasse: status === 'Frei' ? '' : event.klasse,
-    aufsicht: status === 'Frei' ? '' : event.aufsicht
-  }
-
-  calendarEvents.value[index] = updatedEvent
-  eventsService.update(updatedEvent)
+  eventsService.update(findById(event.id))
   eventModal.close()
 }
+
+onMounted(() => {
+  console.log(eventStore.events)})
 
 function findById(id){
   const index = calendarEvents.value.findIndex(e => e.id === id)
