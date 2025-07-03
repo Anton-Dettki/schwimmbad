@@ -52,6 +52,7 @@ import { useTheme } from 'vuetify/framework'
 import { computed, onMounted, shallowRef, watch } from 'vue'
 import { createInputField } from "@sx-premium/interactive-event-modal";
 import { useEventsStore } from '@/store/eventStore.js'
+import { createCurrentTimePlugin } from '@schedule-x/current-time'
 
 const eventStore = useEventsStore()
 const theme = useTheme()
@@ -218,7 +219,7 @@ const calendarApp = shallowRef(createCalendar({
     },
     // other callbacks...
   },
-  plugins: [eventModal, dragAndDrop, calendarControls, eventsService, sidebar]
+  plugins: [eventModal, dragAndDrop, calendarControls, eventsService, sidebar, createCurrentTimePlugin()]
 }))
 
 function changeEventStatus(event, status) {

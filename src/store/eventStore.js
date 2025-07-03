@@ -114,7 +114,7 @@ export const useEventsStore = defineStore('events', () => {
 
   function changeEventStatus (event, status) {
     const index = findIndex(event.id)
-    events.value[index] = { ...events.value[index], aufsicht: "TBD", klasse: "TBD", calendarId: status }
+    events.value[index] = { ...events.value[index], title: status === 'Frei'? 'Frei' : 'Gebucht', aufsicht: "TBD", klasse: "TBD", calendarId: status }
     console.log(events.value[index])
   }
 
