@@ -48,7 +48,7 @@ import { createCalendarControlsPlugin } from '@schedule-x/calendar-controls'
 import { createEventsServicePlugin } from '@schedule-x/events-service'
 import { createSidebarPlugin } from '@sx-premium/sidebar'
 import { createInteractiveEventModal } from '@sx-premium/interactive-event-modal'
-import { useTheme } from 'vuetify/framework'
+import { useDate, useTheme } from 'vuetify/framework'
 import { computed, onMounted, shallowRef, watch } from 'vue'
 import { createInputField } from "@sx-premium/interactive-event-modal";
 import { useEventsStore } from '@/store/eventStore.js'
@@ -58,6 +58,8 @@ import { useUserStore } from '@/store/userStore.js'
 const userStore = useUserStore()
 const eventStore = useEventsStore()
 const theme = useTheme()
+const date = useDate()
+
 
 const currentTheme = computed(() => theme.global.name.value)
 const calendarEvents = computed(() => eventStore.events)
@@ -86,6 +88,7 @@ const aufsichtInputField = createInputField({
     }
   }
 })
+
 const klasseInputField = createInputField({
   label: 'Klasse',
   type: 'text',
@@ -191,7 +194,7 @@ const calendarApp = shallowRef(createCalendar({
         onContainer: '#001F25',  // nearly black for clear text
       },
     }},
-  selectedDate: '2025-06-02',
+  selectedDate: '2025-07-07',
   views: [
     createViewDay(),
     createViewWeek(),
