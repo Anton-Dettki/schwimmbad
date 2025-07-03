@@ -2,7 +2,7 @@
   <v-row class="pa-5">
     <v-col class="d-flex align-center">
       <v-btn variant="text" href="/" class="mx-2" size="70" flat :ripple="false">
-        <v-avatar image="/src/assets/calendar11.png " size="70"/>
+        <v-avatar image="./src/assets/calendar11.png " size="70"/>
       </v-btn>
       <v-btn v-if="route.path !== '/freie-slots'" variant="outlined" href="/freie-slots" class="mx-2">
         <h3> Freie Termine </h3>
@@ -25,7 +25,7 @@
           </v-badge>
       </v-btn>
       <v-btn variant="text" @click="openProfileDialog = true" size="55">
-        <v-avatar size="55" image="/src/assets/user/admin/adminAvatar.png"/>
+        <v-avatar size="55" image="./src/assets/user/admin/adminAvatar.png"/>
       </v-btn>
     </v-col>
   </v-row>
@@ -39,35 +39,14 @@
 
 <script setup>
 import { useRoute } from 'vue-router'
-
-const route = useRoute()
-
-const items = [
-  {
-    title: 'Foo',
-    value: 'foo',
-  },
-  {
-    title: 'Bar',
-    value: 'bar',
-  },
-  {
-    title: 'Fizz',
-    value: 'fizz',
-  },
-  {
-    title: 'Buzz',
-    value: 'buzz',
-  },
-]
 import { ref } from 'vue'
 import { useTheme } from 'vuetify'
 import Profile from '@/components/Profile.vue'
 
+const route = useRoute()
 const theme = useTheme()
 
 const openProfileDialog = ref(false)
-
 const isDark = ref(true)
 const notifications = ref(false)
 

@@ -2,15 +2,19 @@
   <ScheduleXCalendar :calendar-app="calendarApp" >
     <template #interactiveModalAdditionalFields="{ calendarEvent }">
       <v-card variant="text">
-        <v-row class="mb-2">
-          <v-col cols="3">
-            <p> <v-icon icon="mdi-human-male-board" class="mr-1" size="x-small"/> {{ aufsicht(calendarEvent.id) }} </p>
-          </v-col>
-          <v-col>
-            <v-icon icon="mdi-human-male-child" class="mr-1"  size="x-small"/>
-            Klasse: {{ klasse(calendarEvent.id) }}
-          </v-col>
-        </v-row>
+            <v-row class="mt-1 ml-1">
+              <v-icon icon="mdi-school-outline" class="mr-1" size="small"/>
+              {{kita(calendarEvent.id) }}
+            </v-row>
+            <v-row>
+              <v-col>
+                <v-icon icon="mdi-human-male-board" class="mr-1" size="small"/> {{ aufsicht(calendarEvent.id) }}
+              </v-col>
+              <v-col>
+                <v-icon icon="mdi-human-male-child" class="mr-1"  size="small"/> Klasse: {{ klasse(calendarEvent.id) }}
+              </v-col>
+            </v-row>
+
         <v-row class="my-2 ml-3">
           <v-btn v-if="calendarEvent.calendarId === user.kita" @click="changeEventStatus(calendarEvent, 'Frei')" variant="tonal">
             Freigeben
@@ -238,6 +242,10 @@ function aufsicht(id) {
 
 function klasse(id) {
   return findById(id).klasse
+}
+
+function kita(id) {
+  return findById(id).calendarId
 }
 
 watch(currentTheme, (newTheme) => {
