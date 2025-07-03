@@ -110,7 +110,8 @@ const calendarApp = shallowRef(createCalendar({
   theme: 'dark',
   calendars: {
     Frei: {
-      colorName: 'personal',
+      label: 'Frei',
+      colorName: 'Frei',
       lightColors: {
         main: '#f9d71c',
         container: '#fff5aa',
@@ -123,7 +124,8 @@ const calendarApp = shallowRef(createCalendar({
       },
     },
     KitaElbkinder: {
-      colorName: 'work',
+      label: 'Kita Elbkinder',
+      colorName: 'KitaElbkinder',
       lightColors: {
         main: '#f91c45',
         container: '#ffd2dc',
@@ -136,7 +138,8 @@ const calendarApp = shallowRef(createCalendar({
       },
     },
     KitaRegenbogen: {
-      colorName: 'leisure',
+      label: 'Kita Regenbogen',
+      colorName: 'KitaRegenbogen',
       lightColors: {
         main: '#1cf9b0',
         container: '#dafff0',
@@ -149,7 +152,8 @@ const calendarApp = shallowRef(createCalendar({
       },
     },
     KitaWasserfreunde: {
-      colorName: 'school',
+      label: 'Kita Wasserfreunde',
+      colorName: 'KitaWasserfreunde',
       lightColors: {
         main: '#1c7df9',
         container: '#d2e7ff',
@@ -162,7 +166,8 @@ const calendarApp = shallowRef(createCalendar({
       },
     },
     Sternipark: {
-      colorName: 'Frei',
+      label: 'Sternipark',
+      colorName: 'Sternipark',
       lightColors: {
         main: '#6333d5',         // dark teal
         container: '#dad1f6',    // soft teal for background contrast

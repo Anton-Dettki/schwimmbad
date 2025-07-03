@@ -4,10 +4,10 @@
       <v-btn variant="text" href="/" class="mx-2" size="70" flat :ripple="false">
         <v-avatar :image="calendar" size="70"/>
       </v-btn>
-      <v-btn v-if="route.path !== '/freie-slots'" variant="outlined" href="/freie-slots" class="mx-2">
+      <v-btn :disabled="route.path === '/freie-slots'" variant="outlined" href="/freie-slots" class="mx-2">
         <h3> Freie Termine </h3>
       </v-btn>
-      <v-btn v-if="route.path !== '/meine-termine'" variant="outlined" href="/meine-termine">
+      <v-btn :disabled="route.path === '/meine-termine'" variant="outlined" href="/meine-termine">
         <h3> Meine Termine </h3>
       </v-btn>
     </v-col>
