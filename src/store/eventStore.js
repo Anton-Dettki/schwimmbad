@@ -111,10 +111,23 @@ export const useEventsStore = defineStore('events', () => {
     kita: "Sternipark",
     email: 'wilhelmstrasse@sternipark.de',
   })
+  const notifications = ref([])
+
+  function addNotification (event, type) {
+    console.log("type: ", type)
+    notifications.value.push({ ...event, person: user.value, type: type})
+  }
+
+  function markAsRead (event) {
+    const index = notifications.value.findIndex(e => e.id === event.id && e.type === event.type)
+    notifications.value.splice(index, 1)
+  }
 
   function changeEventStatus (event, status) {
     const index = findIndex(event.id)
     events.value[index] = { ...events.value[index], title: status === 'Frei'? 'Frei' : 'Gebucht', aufsicht: "TBD", klasse: "TBD", calendarId: status }
+
+    addNotification(events.value[index], status === 'Frei'? "published":"booked")
     console.log(events.value[index])
   }
 
@@ -226,6 +239,6 @@ export const useEventsStore = defineStore('events', () => {
       }
     ]
   }
-  return { events, user, changeEventStatus, resetEvents }
+  return { events, user, notifications, changeEventStatus, resetEvents, markAsRead }
 }, { persist: true }
 )
