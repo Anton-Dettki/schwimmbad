@@ -2,7 +2,7 @@
   <v-row class="pa-5">
     <v-col class="d-flex align-center">
       <v-btn variant="text" href="/" class="mx-2" size="70" flat :ripple="false">
-        <v-avatar image="./src/assets/calendar11.png " size="70"/>
+        <v-avatar :image="calendar" size="70"/>
       </v-btn>
       <v-btn v-if="route.path !== '/freie-slots'" variant="outlined" href="/freie-slots" class="mx-2">
         <h3> Freie Termine </h3>
@@ -25,11 +25,10 @@
           </v-badge>
       </v-btn>
       <v-btn variant="text" @click="openProfileDialog = true" size="55">
-        <v-avatar size="55" image="./src/assets/user/admin/adminAvatar.png"/>
+        <v-avatar size="55" :image="avatar"/>
       </v-btn>
     </v-col>
   </v-row>
-
 
   <!-- TODO -->
   <v-dialog v-model="openProfileDialog" max-width="800">
@@ -42,6 +41,9 @@ import { useRoute } from 'vue-router'
 import { ref } from 'vue'
 import { useTheme } from 'vuetify'
 import Profile from '@/components/Profile.vue'
+import avatar from '@/assets/user/admin/adminAvatar.png'
+import calendar from '@/assets/calendar11.png'
+
 
 const route = useRoute()
 const theme = useTheme()

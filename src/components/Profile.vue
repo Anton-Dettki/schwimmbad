@@ -2,7 +2,7 @@
   <v-card>
     <v-card-title>
       <v-row class="ma-1" align="center">
-        <v-avatar size="50" image="/src/assets/user/admin/adminAvatar.png" class="mr-3"/>
+        <v-avatar class="mr-3" size="50" :image="avatar" />
         <h3> {{ user.name }} </h3>
       </v-row>
     </v-card-title>
@@ -14,6 +14,7 @@
 
 <script setup>
 import { user } from '../store/eventStore.js'
+import avatar from '@/assets/user/admin/adminAvatar.png'
 
 </script>
 
