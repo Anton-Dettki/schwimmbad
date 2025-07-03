@@ -64,6 +64,7 @@ const calendarEvents = computed(() => eventStore.events)
 const user = computed(() => userStore.currentUser)
 
 const visibleEvents = computed(() => {
+  console.log(user.value.name)
   return calendarEvents.value.filter(event => {
     const calendarAllowed = user.value.calendars.includes(event.calendarId)
     const locationAllowed = !user.value.isIns || event.location === user.value.location

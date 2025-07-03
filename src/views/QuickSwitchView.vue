@@ -16,7 +16,7 @@
               :image="user.img"
               size="100"
               class="mb-2 cursor-pointer"
-              @click="switchUser(user)"
+              @click="switchUser(user.name)"
           />
           <h3 class="mt-1">{{ user.name }}</h3>
         </v-col>
